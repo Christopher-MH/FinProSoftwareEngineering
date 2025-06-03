@@ -25,14 +25,12 @@ class redeem_controller extends db_controller {
         $stmt = $this->connect()->query("SELECT * FROM vouchers");
         $this->voucher_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Tambahkan flag redeemable
         foreach ($this->voucher_list as &$row) {
-            $row['redeemable'] = $row['harga'] <= $this->user_point;
+            $row['redeemable'] = $row['harga'] <= $this->user_point && $row['stok'] > 0;
         }
     }
 
     public function redeem($voucher_id) {
-        // Cek poin dan stok
         $stmt = $this->connect()->prepare("SELECT harga, stok FROM vouchers WHERE voucher_id = :voucher_id");
         $stmt->execute(['voucher_id' => $voucher_id]);
         $voucher = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -44,13 +42,11 @@ class redeem_controller extends db_controller {
 
         if ($harga > $this->user_point || $stok <= 0) return false;
 
-        // Mulai transaksi
         $this->conn->beginTransaction();
 
         try {
             $new_point = $this->user_point - $harga;
 
-            // Update poin pengguna
             $updateUser = $this->conn->prepare("
                 UPDATE users 
                 SET poin_skrng = poin_skrng - :harga, 
@@ -62,7 +58,6 @@ class redeem_controller extends db_controller {
                 'user_id' => $this->user_id
             ]);
 
-            // Update stok voucher
             $updateVoucher = $this->conn->prepare("
                 UPDATE vouchers 
                 SET stok = stok - 1 
