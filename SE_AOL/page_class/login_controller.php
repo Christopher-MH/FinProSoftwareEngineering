@@ -1,63 +1,50 @@
 <?php
-require 'db_controller.php';
+require '../page_class/db_controller.php';
 
 class login_controller extends db_controller {
-    private $email;
-    private $pass;
-    private $hashed_Pass;
-    public $entered_email = "";
+    private $email = null;
+    private $password = null;
+    public $email_placeholder = "Email";
+    public $pass_placeholder = "Password";
+    public $login_failed = false;
 
-    public $email_placeholder = null;
-    public $fail_login = "none";
-
-    private $pass_empty_validation = 0;
-    private $pass_email_validation = 0;
-
-
-    private function set_user_input($data) {
-        $this->email = isset($data["email_input"]) ? trim($data["email_input"]) : '';
-        $this->entered_email = $this->email;
-        $this->pass = isset($data["password_input"]) ? trim($data["password_input"]) : '';
+    public function set_credentials($data) {
+        $this->email = trim($data['email_input']);
+        $this->password = trim($data['pass_input']);
     }
 
-    private function validate_empty(){
-        $this->pass_empty_validation = 0;
-        $this->email_placeholder = empty($this->email) ? "Email harus diisi!" : null;
-
-        if ($this->email_placeholder === null && !empty($this->pass)) {
-            $this->pass_empty_validation = 1;
+    public function validate() {
+        if (empty($this->email)) {
+            $this->email_placeholder = "Email harus diisi!";
         }
+
+        if (empty($this->password)) {
+            $this->pass_placeholder = "Password harus diisi!";
+        }
+
+        return !empty($this->email) && !empty($this->password);
     }
 
-    private function validate_email_format(){
-        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            $this->email_placeholder = "Email format tidak valid!";
-            $this->pass_email_validation = 0;
+    public function attempt_login() {
+        $hashed = md5($this->password);
+
+        $sql = "SELECT user_id, status_account FROM users WHERE email = ? AND pass = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$this->email, $hashed]);
+
+        if ($stmt->rowCount() === 1) {
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result['status_account'] === 'aktif') {
+                session_start();
+                $_SESSION['user_id'] = $result['user_id'];
+                header("Location: ../page_php/home.php");
+                exit;
+            } else {
+                $this->email_placeholder = "Akun tidak aktif ({$result['status_account']})";
+            }
         } else {
-            $this->pass_email_validation = 1;
+            $this->login_failed = true;
+            $this->email_placeholder = "Email atau password salah!";
         }
     }
-
-    public function login($data){
-        $this->set_user_input($data);
-        $this->validate_empty();
-
-        if ($this->pass_empty_validation == 0) return;
-
-        $this->validate_email_format();
-        if ($this->pass_email_validation == 0) return;
-
-        $this->hashed_Pass = md5($this->pass);
-
-        $user = $this->get_user_by_email($this->email);
-
-        if (!$user || $user["pass"] !== $this->hashed_Pass) {
-            $this->fail_login = "block";
-            return;
-        }
-
-        header("Location: ../page_php/profile.php");
-        exit;
-    }
-
 }

@@ -41,18 +41,6 @@ body {
     font-size: 16px;
 }
 
-h2 {
-    display: none;
-    font-family: 'Arial', sans-serif;
-    color: #fc3c2b;
-    font-size: 15px;
-    font-style: italic;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    margin-left: 5%;
-    opacity: 1;
-}
-
 .remember {
     display: flex;
     align-items: center;

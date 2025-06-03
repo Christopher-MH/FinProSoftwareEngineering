@@ -2,6 +2,9 @@
 require "../page_class/signup_controller.php";
 $signup_controller = new signup_controller();
 
+ini_set('session.cookie_path', '/');
+session_start();
+
 if(isset($_POST["signup_button"])) {
     $signup_controller->create_user($_POST, $_FILES['photo_input']);
 }
