@@ -1,0 +1,336 @@
+body{
+    background-color: #f2f2f2;
+}
+
+.main-container{
+    position: relative;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_A{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+
+    height: 675px;
+
+    background: url(../page_assets/home_1.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 100;
+
+    margin: 0px 0px 0px 0px;
+    padding: 80px 150px 0px 150px;
+}
+
+.container_A h1{
+    margin: 0px 0px 0px 0px;
+    font-size: 56px;
+    font-weight: bold;
+    font-family: Poppins, sans-serif;
+    color: white;
+    text-shadow: 0.7px 0 0 #000, 0 -0.7px 0 #000, 0 0.7px 0 #000, -0.7px 0 0 #000;
+}
+
+.container_A p{
+    margin: 32px 0px 32px 0px;
+    font-size: 18px;
+    line-height: 0.8;
+    font-family: Poppins, sans-serif;
+    color: white;
+    text-shadow: 0.7px 0 0 #000, 0 -0.7px 0 #000, 0 0.7px 0 #000, -0.7px 0 0 #000;
+}
+
+.container_A button {
+  background: linear-gradient(135deg, #66bb6a, #43a047);
+  border: none;
+  color: white;
+  font-size: 18px;
+    font-family: Poppins, sans-serif;
+
+  padding: 10px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  width: 30%;
+  transition: background 0.3s ease;
+}
+
+.container_A button:hover {
+  background: linear-gradient(135deg, #5aa85f, #388e3c);
+}
+
+.container_A .info_num {
+  display: flex;
+  flex-direction: row;
+  margin: 32px 0px 0px 0px;
+  padding: 40px 12px 0px 0px;
+  color: white;
+  text-shadow: 0.7px 0 0 #000, 0 -0.7px 0 #000, 0 0.7px 0 #000, -0.7px 0 0 #000;
+}
+
+span.jumlah_sampah, span.jumlah_pengguna{
+    display: flex;
+    flex-direction: column;
+}
+
+span.jumlah_sampah h1, span.jumlah_pengguna h1{
+    margin: 0px 0px 0px 30px;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Poppins, sans-serif;
+}
+
+span.jumlah_sampah p, span.jumlah_pengguna p{
+    margin: 0px 0px 0px 30px;
+    font-size: 18px;
+    font-family: Poppins, sans-serif;
+}
+
+.container_B{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.container_B img{
+    max-height: 80px;
+    margin-left: 60px;
+    margin-right: 60px;
+    transition: transform 0.5s ease, box-shadow 0.5 ease;
+}
+
+.container_B img:hover{
+    transform: scale(1.1);
+}
+
+.container_C{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container_D{
+    height: 400px;
+    width: 1100px;
+    margin: 0px 112px 20px;
+    padding: 0px 48px 20px;
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    background-image: radial-gradient(circle at center center, #e8f5e9, #e8f5e9), repeating-radial-gradient(circle at center center, #e8f5e9, #e8f5e9, 69px, transparent 138px, transparent 69px);
+    background-blend-mode: multiply;
+    background-color: #e8f5e9;
+}
+
+.container_E{
+    font-size: 24px;
+    font-family: Poppins, sans-serif;
+    color: #333;
+    width: 40%;
+}
+
+.container_F{
+    font-size: 18px;
+    font-family: Poppins, sans-serif;
+    color: #333;
+    width: 60%;
+}
+
+.container_G{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container_H, .container_I, .container_J{
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    position: absolute;
+
+    top: 1375px;
+
+    width: 270px;
+    height: 290px;
+    color: #333;
+    font-family: Poppins, sans-serif;
+
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container_H:hover, .container_I:hover, .container_J:hover{
+    transform: scale(1.05);
+}
+
+.container_H{
+    left: 150px;
+}
+
+.container_J{
+    right: 150px;
+}
+
+.container_H img, .container_I img, .container_J img{
+    max-height: 100px;
+    max-width: 100px;
+
+    border-radius: 1000%;
+    background-color: #e8f5e9;
+}
+
+.container_H h1, .container_I h1, .container_J h1{
+    font-size: 22px;
+}
+
+.container_H p, .container_I p, .container_J p{
+    margin-top: 0px;
+}
+
+.container_H a, .container_I a, .container_J a{
+    margin-top: 20px;
+    margin-bottom: 0px;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.container_H a:hover, .container_I a:hover, .container_J a:hover{
+    color: #689f38;
+}
+
+.container_K{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container_L{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    padding-top: 350px;
+    padding-left: 180px;
+    padding-right: 180px;
+
+    max-width: 65%;
+
+    color: #333;
+}
+
+.container_M{
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-right: 10px;
+}
+
+.container_M img{
+    max-width: 300px;
+    max-height: 235px;
+
+    border-radius: 10px;
+}
+
+.container_N{
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    padding: 20px;
+
+    margin-left: 10px;
+}
+
+.container_N h1{
+    margin-bottom: 0px;
+    font-size: 28px;
+}
+
+.container_N p{
+    font-size: 18px;
+}
+
+/* bagian 2 */
+
+.container_O{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container_P{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    padding-top: 30px;
+    padding-left: 180px;
+    padding-right: 180px;
+
+    max-width: 65%;
+
+    color: #333;
+}
+
+.container_Q{
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    padding: 20px;
+
+    margin-left: 10px;
+}
+
+.container_Q h1{
+    margin-bottom: 0px;
+    font-size: 28px;
+}
+
+.container_Q p{
+    font-size: 18px;
+}
+
+.container_Q_list{
+    font-size: 18px;
+    line-height: 0.8;
+}
+
+.container_R{
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-right: 10px;
+}
+
+.container_R img{
+    max-width: 300px;
+    max-height: 235px;
+
+    border-radius: 10px;
+}
