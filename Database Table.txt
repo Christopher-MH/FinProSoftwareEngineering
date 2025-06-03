@@ -1,0 +1,45 @@
+Table: Users
+user_id (PRIMARY KEY, Uxxxx)
+nama_pertama
+nama_akhir
+photo_path (simpen di ../profile_photos, klo bisa .png atau .jpg saja)
+tanggal_lahir
+handphone
+email (UNIQUE)
+password (encrypt aja)
+status (aktif, suspend, block)
+poin_skrng
+poin_digunakan
+poin_masuk
+
+
+
+Table: Alamat
+alamat_id (PRIMARY KEY, Axxxx)
+user_id (FOREIGN KEY ON UPDATE CASCADE ON DELETE CASCADE)
+provinsi
+kota
+alamat_lengkap
+maps_pinpoint (latitude, longtitude)
+
+
+
+Table: Voucher
+voucher_id (PRIMARY KEY, Vxxxx)
+nama
+photo (4x3, supaya bisa dalam bentuk card)
+deskripsi
+harga (brpa poin)
+jumlah
+
+
+
+Table: Penjemputan
+penjemputan_id (PRIMARY KEY, Pxxxx)
+user_id (FOREIGN KEY ON UPDATE CASCADE ON DELETE CASCADE)
+berat_organik (kg)
+berat_anorganik (kg)
+berat_b3 (kg)
+jam_penjemputan
+lokasi_penjemputan
+poin_masuk (dicatat dan tambahkan ke data user)
