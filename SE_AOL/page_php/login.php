@@ -1,3 +1,12 @@
+<?php
+require "../page_class/login_controller.php";
+$login_controller = new login_controller();
+
+if(isset($_POST["login_button"])){
+    $login_controller->login($_POST);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +18,18 @@
 </head>
 <body>
     <div class="main_container">
-        <form class="login_form">
+        <form class="login_form" method="POST" action="">
             <h1>Log In</h1>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
+            <input type="text" name="email_input" placeholder="Email" value="<?php echo htmlspecialchars($login_controller->email ?? ''); ?>" required>
+            <input type="password" name="password_input" placeholder="Password" required>
+            <h2 style="display: <?php echo $login_controller->fail_login; ?>;">*Wrong email or password</h2>
 
             <div class="remember">
                 <input type="checkbox" id="remember">
                 <label for="remember">Remember me</label>
             </div>
 
-            <button type="submit" class="login_button">Login</button>
+            <input type = "submit" name = "login_button" value = "Log in" class="login_button">
 
             <p class="terms">
                 By continuing, you agree to the 
