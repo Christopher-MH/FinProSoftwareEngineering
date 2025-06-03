@@ -8,6 +8,6 @@ Cara Buka Website
 6. Pada web browser, ketik: "localhost/SE_AOL/page_php/home.php"
 
 Kenapa repository baru ini dibuat?
-- Belum terbiasa menggunakan ReactJS
+- Belajar dari kesalahan project sebelumnya, kita belum terbiasa menggunakan ReactJS
 - Mempercepat & mempermudah proses development
 - Versi ditulis dalam pure PHP, HTML, CSS, dan JS
