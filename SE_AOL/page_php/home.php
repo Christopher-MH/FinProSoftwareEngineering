@@ -1,3 +1,8 @@
+<?php
+    ini_set('session.cookie_path', '/');
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

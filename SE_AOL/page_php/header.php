@@ -1,3 +1,9 @@
+<?php
+    ini_set('session.cookie_path', '/');
+    session_start();
+    $is_logged_in = isset($_SESSION['user_id']);
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,8 +25,14 @@
                 <a href="contact.php">Contact Us</a>
                 <a href="profile.php">Profile</a>
             </nav>
-            <a href="login.php" class="login_button">Login</a>
+            <div class="auth-buttons">
+            <?php if ($is_logged_in): ?>
+                <a href="logout.php" class="login_button">Log Out</a>
+            <?php else: ?>
+                <a href="login.php" class="login_button">Login</a>
+                <a href="signup.php" class="login_button">Sign Up</a>
+            <?php endif; ?>
+            </div>
         </header>
-       
     </body>
 </html>

@@ -1,9 +1,16 @@
 <?php
-require "../page_class/login_controller.php";
-$login_controller = new login_controller();
+require '../page_class/login_controller.php';
 
-if(isset($_POST["login_button"])){
-    $login_controller->login($_POST);
+ini_set('session.cookie_path', '/');
+session_start();
+
+$login = new login_controller();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $login->set_credentials($_POST);
+    if ($login->validate()) {
+        $login->attempt_login();
+    }
 }
 ?>
 
@@ -18,18 +25,22 @@ if(isset($_POST["login_button"])){
 </head>
 <body>
     <div class="main_container">
-        <form class="login_form" method="POST" action="">
+        <form class="login_form" method="post">
             <h1>Log In</h1>
-            <input type="text" name="email_input" placeholder="Email" value="<?php echo htmlspecialchars($login_controller->email ?? ''); ?>" required>
-            <input type="password" name="password_input" placeholder="Password" required>
-            <h2 style="display: <?php echo $login_controller->fail_login; ?>;">*Wrong email or password</h2>
+
+            <input type="text" name="email_input" placeholder="<?= $login->email_placeholder ?>" value="<?= htmlspecialchars($_POST['email_input'] ?? '') ?>">
+            <input type="password" name="pass_input" placeholder="<?= $login->pass_placeholder ?>">
 
             <div class="remember">
                 <input type="checkbox" id="remember">
                 <label for="remember">Remember me</label>
             </div>
 
-            <input type = "submit" name = "login_button" value = "Log in" class="login_button">
+            <button type="submit" class="login_button">Login</button>
+
+            <?php if ($login->login_failed): ?>
+                <p style="color: red;">Email atau password salah.</p>
+            <?php endif; ?>
 
             <p class="terms">
                 By continuing, you agree to the 
