@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2025 at 03:09 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Jun 04, 2025 at 06:46 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -79,7 +79,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `nama_pertama`, `nama_akhir`, `photo_path`, `tanggal_lahir`, `handphone`, `email`, `pass`, `status_account`, `poin_skrng`, `poin_masuk`, `poin_keluar`) VALUES
-('U0001', 'Boss', 'Besar', '../page_assets/profile_pictures/U0001_Photo.png', '1 January 2000', '081234567890', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500', 'aktif', 0, 0, 0);
+('U0001', 'Boss', 'Besar', '../page_assets/profile_pictures/U0001_Photo.png', '1 January 2000', '081234567890', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500', 'aktif', 0, 0, 0),
+('U0002', 'Cairn', 'Tsukigane', '../page_assets/profile_pictures/U0002_Photo.png', '15 June 2005', '0895334929292', 'harmity@gmail.com', '246556e541037a347f83fa7c470f9928', 'aktif', 310, 0, 1370),
+('U0003', 'Kaida', 'Mikagura', '../page_assets/profile_pictures/U0003_Photo.png', '15 June 2005', '0895334929292', 'kaida@gmail.com', 'd51526469e0e84de1c48a00751b27a64', 'aktif', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -95,6 +97,17 @@ CREATE TABLE `vouchers` (
   `harga` int(11) DEFAULT NULL,
   `stok` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `vouchers`
+--
+
+INSERT INTO `vouchers` (`voucher_id`, `nama`, `photo_path`, `deskripsi`, `harga`, `stok`) VALUES
+('V0001', 'Paket Benih Sayur', '../page_assets/vouchers/benih_sayur.png', 'Isi 3 benih: bayam, kangkung, tomat.', 70, 14),
+('V0002', 'Botol Minum', '../page_assets/vouchers/bottle.png', 'Botol minum ramah lingkungan.', 150, 1),
+('V0003', 'Totebag Daur Ulang', '../page_assets/vouchers/totebag.png', 'Totebag ramah lingkungan dari bahan daur ulang.', 120, 15),
+('V0004', 'Sabun Organik', '../page_assets/vouchers/sabun_organik.png', 'Sabun mandi alami tanpa bahan kimia.', 90, 20),
+('V0005', 'Tumbler Stainless', '../page_assets/vouchers/tumbler.png', 'Tumbler anti bocor 500ml untuk aktivitas sehari-hari.', 180, 12);
 
 --
 -- Indexes for dumped tables
